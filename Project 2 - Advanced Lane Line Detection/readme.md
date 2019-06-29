@@ -17,7 +17,7 @@
 
 [//]: # (Image References)
 
-[image0]: ./output_images/final output.png "Final output"
+[image0]: ./output_images/final output.png
 [image1]./output_images/Undistorded chessboard.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
