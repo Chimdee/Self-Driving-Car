@@ -1,6 +1,8 @@
 
 
-## Advanced Lane Finding on the road using traditional CV technique
+## Advanced Lane Finding 
+### Overview
+In this project, I developed a software pipeline which detects lane lines on the road using traditional computer vision techniques.
 
 ![alt text][image0]
 
@@ -17,24 +19,24 @@
 
 [//]: # (Image References)
 
-[image0]: ./output_images/final&#32;output.png  
-[image1]./output_images/Undistorded chessboard.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[image0]: ./output_images/final&#32;output.png  "Final output"
+[image1]  ./output_images/Undistorded chessboard.png "Undistorted Chessboard"
+[image2]: ./output_images/Undistorted image.png "Road Transformed"
+[image3]: ./output_images/Sobel gradients.png "Sobel Gradients"
+[image4]: ./output_images/Sobel gradients magnitude.png "Sobel Gradients Magnitude"
+[image5]: ./output_images/Sobel gradients direction.png "Sobel Gradients Direction"
+[image6]: ./output_images/S channel in HSL color space.png "S channel thresholded"
+[image7]: ./output_images/Thresholded binary imag.png "Thresholding combined"
+[image8]: ./output_images/Perspective transformed binary image.png "Warped image"
+[image9]: ./output_images/Warped image with detected lane lines.png "Lane Detection"
+[image10]: ./output_images/Warped image with detected lane lines (2).png "Lane Detection (2)"
+[image11]: ./output_images/Original image with detected lane lines.png "Original and final output"
+[video1]: ./project_video_output.mp4 "Video"
 
-## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider each steps individually and describe how I addressed it in my implementation.  
 
 ---
-
-### Writeup / README
-
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 You're reading it!
 
