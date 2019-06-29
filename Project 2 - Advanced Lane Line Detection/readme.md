@@ -1,8 +1,10 @@
 
 
-### Advanced Lane Finding on the road using traditional CV technique
+## Advanced Lane Finding on the road using traditional CV technique
 
-The goals / steps of this project are the following:
+![alt text][image0]
+
+### The goals / steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -15,7 +17,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[image0]: ./output_images/final output.png "Final output"
+[image1]./output_images/Undistorded chessboard.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
