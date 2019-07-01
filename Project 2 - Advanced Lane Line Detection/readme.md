@@ -52,58 +52,65 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![Chessboard][image1]
 
-#### 1. Distortion correction
+#### Distortion correction
 
 Using the calculated camera calibration matrix and distoption coefficient, I correct road image distotion:
 ![alt text][image2]
 
-#### 2. Color and gradient thresholding
+#### Color and gradient thresholding
 I used a combination of color and gradient thresholds to generate a binary image using following thresholding methods.
 
 * Get a binary image thresholded by oriental gradients of image using `cv2.Sobel()`:
+
 ![alt text][image3]
 
 * Get a binary image thresholded by gradient magnitude of image using `cv2.Sobel()`:
+
 ![alt text][image4]
 
-* Get a binary image thresholded by S channel in HSL color space after color space conversion using `cv2.cvtColor()`:
+* Get a binary image thresholded by gradient direction of image using `cv2.Sobel()` and `np.arctan2()`:
+
 ![alt text][image5]
 
-* Get a binary image thresholded by gradient magnitude of image using `cv2.Sobel()`:
+* Get a binary image thresholded by S channel in HSL color space after color space conversion using `cv2.cvtColor()`:
+
 ![alt text][image6]
 
 * Finally I used combination of above mentioned thresohding techniques to get final binary image for this step:
+
 ![alt text][image7]
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
-
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+#### Perspective Transform
+Fisrt, I located source points `src` in the sample image and destination points `dst` in _birds-eye_ as shown below. Then I did prespective transform using  Opencv's `cv2.getPerspectiveTransform()` function. In addition, inverse perpective transform _Minv_ is  calculated here to unwarp sample images later in the pipeline. 
 
 ```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+top_left = np.array([560, 460]).reshape(1, -1)
+top_right = np.array([730, 455]).reshape(1, -1)
+bottom_left = np.array([200, 719]).reshape(1, -1)
+bottom_right = np.array([1200, 719]).reshape(1, -1)
+
+src = np.float32([top_left, top_right, 
+                 bottom_right, bottom_left])
+offset = 100
+dst = np.float32([[bottom_left[0][0] - offset, 0], 
+                  [bottom_right[0][0] + offset, 0], 
+                  [bottom_right[0][0], bottom_right[0][1]], 
+                  [bottom_left[0][0], bottom_left[0][1]]]) 
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 560, 460      | 100, 0        | 
+| 730, 455      | 1300, 0      |
+| 1200, 719     | 1200, 719      |
+| 200, 719      | 200, 0 719      |
+
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+![alt text][image8]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
