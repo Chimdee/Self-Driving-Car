@@ -20,8 +20,8 @@ Complete jupyter notebook of the pipeline can be found [here](https://github.com
 
 [//]: # (Image References)
 
-[image0]:./output_images/final&#32;output.png  "Final output"  
-[image1]./output_images/Undistorded chessboard.png "Undistorted Chessboard"  
+[image0]:./output_images/final&#32;output.png "Final output"  
+[image1]:./output_images/Undistorded chessboard.png "Undistorted Chessboard"  
 [image2]:./output_images/Undistorted image.png "Road Transformed"  
 [image3]:./output_images/Sobel gradients.png "Sobel Gradients"  
 [image4]:./output_images/Sobel gradients magnitude.png "Sobel Gradients Magnitude"  
