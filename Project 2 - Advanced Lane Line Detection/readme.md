@@ -32,6 +32,7 @@ Complete jupyter notebook of the pipeline can be found [here](https://github.com
 [image9]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Lane Detection"  
 [image10]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines&#32;(2).png "Lane Detection (2)"  
 [image11]:./output_images/Original&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Original and final output"  
+[image12]:./output_images/histogram.png "Pixel histogram"
 [video1]:./project_video_output.mp4 "Video"
 
 ### Main libraries and dependencies for the project
@@ -112,11 +113,19 @@ I verified that my perspective transform was working as expected by drawing the 
 
 ![alt text][image8]
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Lane boundary detection
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+First, I calculated pixel histogram of bottom half of the warped image to find lane position. Two peaks of the hisgram should be left and right lane positions on the image. 
 
-![alt text][image5]
+![alt text][image12]
+
+I will slide a fixed-sized window over the image to find lane line, where histogram value takes its maximum. After that I fitted a second polinomial (`np.polyfit()`)  for both left and right lanes to get complete curves. 
+
+![alt text][image9]
+
+Once I have fitted polynomial, I will use its coefficients for detecting lanes for the next frame. In other words, once I knew where the lanes were in the last frame, I can search nearby that polynomial curve lanes in the next frame. It prevents us from doing a sliding window method on entire image for every new video frames coming.
+![alt text][image10]
+
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
