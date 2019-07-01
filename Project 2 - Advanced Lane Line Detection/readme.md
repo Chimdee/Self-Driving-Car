@@ -52,19 +52,28 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![Chessboard][image1]
 
-### Pipeline (single images)
-
-#### 1. Apply distortion correction to raw image.
+#### 1. Distortion correction
 
 Using the calculated camera calibration matrix and distoption coefficient, I correct road image distotion:
 ![alt text][image2]
 
 #### 2. Color and gradient thresholding
-I used a combination of color and gradient thresholds to generate a binary image.
-First, I applied 
+I used a combination of color and gradient thresholds to generate a binary image using following thresholding methods.
 
-Here's an example of final output for this step:
+* Get a binary image thresholded by oriental gradients of image using `cv2.Sobel()`:
 ![alt text][image3]
+
+* Get a binary image thresholded by gradient magnitude of image using `cv2.Sobel()`:
+![alt text][image4]
+
+* Get a binary image thresholded by S channel in HSL color space after color space conversion using `cv2.cvtColor()`:
+![alt text][image5]
+
+* Get a binary image thresholded by gradient magnitude of image using `cv2.Sobel()`:
+![alt text][image6]
+
+* Finally I used combination of above mentioned thresohding techniques to get final binary image for this step:
+![alt text][image7]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
