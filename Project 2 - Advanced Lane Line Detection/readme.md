@@ -21,17 +21,17 @@ Complete jupyter notebook of the pipeline can be found [here](https://github.com
 [//]: # (Image References)
 
 [image0]:./output_images/final&#32;output.png "Final output"  
-[image1]:./output_images/Undistorded chessboard.png "Undistorted Chessboard"  
-[image2]:./output_images/Undistorted image.png "Undistorted road"  
-[image3]:./output_images/Sobel gradients.png "Sobel Gradients"  
-[image4]:./output_images/Sobel gradients magnitude.png "Sobel Gradients Magnitude"  
-[image5]:./output_images/Sobel gradients direction.png "Sobel Gradients Direction"  
-[image6]:./output_images/S channel in HSL color space.png "S channel thresholded"  
-[image7]:./output_images/Thresholded binary imag.png "Thresholding combined"  
-[image8]:./output_images/Perspective transformed binary image.png "Warped image"  
-[image9]:./output_images/Warped image with detected lane lines.png "Lane Detection"  
-[image10]:./output_images/Warped image with detected lane lines (2).png "Lane Detection (2)"  
-[image11]:./output_images/Original image with detected lane lines.png "Original and final output"  
+[image1]:./output_images/Undistorded&#32;chessboard.png "Undistorted Chessboard"  
+[image2]:./output_images/Undistorted&#32;image.png "Undistorted road"  
+[image3]:./output_images/Sobel&#32;gradients.png "Sobel Gradients"  
+[image4]:./output_images/Sobel&#32;gradients&#32;magnitude.png "Sobel Gradients Magnitude"  
+[image5]:./output_images/Sobel&#32;gradients&#32;direction.png "Sobel Gradients Direction"  
+[image6]:./output_images/S&#32;channel&#32;in&#32;HSL&#32;color&#32;space.png "S channel thresholded"  
+[image7]:./output_images/Thresholded&#32;binary&#32;image.png "Thresholding combined"  
+[image8]:./output_images/Perspective&#32;transformed&#32;binary&#32;image.png "Warped image"  
+[image9]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Lane Detection"  
+[image10]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines&#32;(2).png "Lane Detection (2)"  
+[image11]:./output_images/Original&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Original and final output"  
 [video1]:./project_video_output.mp4 "Video"
 
 ### Main libraries and dependencies for the project
