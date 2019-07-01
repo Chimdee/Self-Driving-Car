@@ -31,7 +31,7 @@ Complete jupyter notebook of the pipeline can be found [here](https://github.com
 [image8]:./output_images/Perspective&#32;transformed&#32;binary&#32;image.png "Warped image"  
 [image9]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Lane Detection"  
 [image10]:./output_images/Warped&#32;image&#32;with&#32;detected&#32;lane&#32;lines&#32;(2).png "Lane Detection (2)"  
-[image11]:./output_images/Original&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Original and final output"  
+[image11]:./output_images/Original&#32;image&#32;with&#32;detected&#32;lane&#32;lines.png "Warped back to original image"  
 [image12]:./output_images/histogram.png "Pixel histogram"
 [video1]:./project_video_output.mp4 "Video"
 
@@ -65,21 +65,26 @@ I used a combination of color and gradient thresholds to generate a binary image
 
 ![alt text][image3]
 
+
 * Get a binary image thresholded by gradient magnitude of image using `cv2.Sobel()`:
 
 ![alt text][image4]
+
 
 * Get a binary image thresholded by gradient direction of image using `cv2.Sobel()` and `np.arctan2()`:
 
 ![alt text][image5]
 
+
 * Get a binary image thresholded by S channel in HSL color space after color space conversion using `cv2.cvtColor()`:
 
 ![alt text][image6]
 
+
 * Finally I used combination of above mentioned thresohding techniques to get final binary image for this step:
 
 ![alt text][image7]
+
 
 #### Perspective Transform
 Fisrt, I located source points `src` in the sample image and destination points `dst` in _birds-eye_ as shown below. Then I did prespective transform using  Opencv's `cv2.getPerspectiveTransform()` function. In addition, inverse perpective transform _Minv_ is  calculated here to unwarp sample images later in the pipeline. 
@@ -113,42 +118,41 @@ I verified that my perspective transform was working as expected by drawing the 
 
 ![alt text][image8]
 
-#### 4. Lane boundary detection
+#### Lane boundary detection
 
-First, I calculated pixel histogram of bottom half of the warped image to find lane position. Two peaks of the hisgram should be left and right lane positions on the image. 
+First, I calculate pixel histogram of bottom half of the warped image to find lane position. Two peaks of the hisgram should be left and right lane positions on the image. 
 
 ![alt text][image12]
 
-I will slide a fixed-sized window over the image to find lane line, where histogram value takes its maximum. After that I fitted a second polinomial (`np.polyfit()`)  for both left and right lanes to get complete curves. 
+I will slide a fixed-sized window over the image to find lane line, where histogram value takes its maximum. After that we will fit a second polinomial (`np.polyfit()`)  for both left and right lanes to get complete curves /yellow curves in the below picture/. 
 
 ![alt text][image9]
 
-Once I have fitted polynomial, I will use its coefficients for detecting lanes for the next frame. In other words, once I knew where the lanes were in the last frame, I can search nearby that polynomial curve lanes in the next frame. It prevents us from doing a sliding window method on entire image for every new video frames coming.
+Once I=we have a fitted polynomial, I will use its coefficients for detecting lanes for the next frame. In other words, once I knew where the lanes were in the last frame, I can search around that lanes for the next frames. It prevents us from implementing the sliding window method on entire image for every new video frames coming.
 ![alt text][image10]
 
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+####  Curvature of lane and vehicle offset position
+We can calculate radius of road curvatures using a formula in [this](https://www.intmath.com/applications-differentiation/8-radius-curvature.php) tutorial. Also in this step, we have convert our metrics into meters from pixels. Here I am assuming that the lane is about 30 meters long and 3.7 meters wide, and our camera image has 720 relevant pixels in the y-dimension (remember, our image is perspective-transformed!), and we'll say roughly 700 relevant pixels in the x-dimension. Therefore, we can use following multiflier for the conversion. 
+`# Define conversions in x and y from pixels space to meters
+ym_per_pix = 30/720 # meters per pixel in y dimension
+xm_per_pix = 3.7/700 # meters per pixel in x dimension `
+When we calculate vehicle offset position from center off the road, we are assuming that the camera is fixed at center of the car front. Therefore along with the detected left and right lane positions, it is easy to calculate the car offset metrics. Namely, we compare middle point of the lane lines with the middle point of image captured by front camera. If the two overlap, it means offset equals to zero implying that vehicle is driving exatcly center of the road. 
 
-I did this in lines # through # in my code in `my_other_file.py`
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### Warp the image back to the original image
+Lanes will be depicted on a blank warped image using `cv2.polyfill()`. Then will map this warped image back to original image using inverse perspective transform matrix _Minv_. With curvature and offset metrics are displayd, final output of our pipeline yields following frame.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
-
-![alt text][image6]
+![alt text][image11]
 
 ---
 
-### Pipeline (video)
+### Pipeline (test video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here's a [link to my video result](./project_video.mp4)
+#### Here's a [link to my video result](./project_video_output.mp4)
 
 ---
 
 ### Discussion
+This pipeline is robust to lane curvature, lane line colors and a few lightening conditions, which are challenging problems for basic tradiational computer vision techniques such as Hough transform. But at the same time, there are still some drawbacks in this pipelines which can be improved. For example, choosing hyperparameters for gradient/color thresholding is somewhat handwavy. One value can be optimal for one road condition but could be suboptinal for many others making it very hard to find an universal optimum value. For example, if you watched video output closely, you may noticed that the pipeline jitters once when the camera sees tree shadow on the road. However, it still could work most of the time. I think one way to improve and make it more robust can be testing the parameters in as many environments as possible and fine-tune them.
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
