@@ -2,7 +2,8 @@
 
 ## Advanced Lane Finding 
 ### Overview
-In this project, I developed a software pipeline which detects lane lines on the road using traditional computer vision techniques.
+In this project, by utilizing traditional computer vision techniques, I developed a software pipeline which detects lane line boundaries on the road. 
+Complete jupyter notebook of the pipeline can be found [here](https://github.com/Chimdee/Self-Driving-Car/blob/master/Project%202%20-%20Advanced%20Lane%20Line%20Detection/Advanced%20Lane%20Finding.ipynb). 
 
 ![alt text][image0]
 
@@ -19,7 +20,7 @@ In this project, I developed a software pipeline which detects lane lines on the
 
 [//]: # (Image References)
 
-[image0]: ./output_images/final&#32;output.png  "Final output"
+[image0]: ./output_images/final&#32;output.png  "Final output"  
 [image1]  ./output_images/Undistorded chessboard.png "Undistorted Chessboard"
 [image2]: ./output_images/Undistorted image.png "Road Transformed"
 [image3]: ./output_images/Sobel gradients.png "Sobel Gradients"
@@ -32,6 +33,12 @@ In this project, I developed a software pipeline which detects lane lines on the
 [image10]: ./output_images/Warped image with detected lane lines (2).png "Lane Detection (2)"
 [image11]: ./output_images/Original image with detected lane lines.png "Original and final output"
 [video1]: ./project_video_output.mp4 "Video"
+
+### Main libraries and dependencies for the project
+* [NumPy] (www.numpy.org) - A widely used scientific computing library for python
+* [OpenCV](www.opencv.org) - A well-known open course computer vision library
+* [Matplotlib](www.matplotlib.org) - A plotting library for python 
+* [MoviePy](https://zulko.github.io/moviepy/) - Video editing library for python
 
 
 ### Here I will consider each steps individually and describe how I addressed it in my implementation.  
