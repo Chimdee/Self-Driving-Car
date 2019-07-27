@@ -38,7 +38,7 @@ The goals / steps of this project are the following:
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/Chimdee/Self-Driving-Car/edit/master/Project%203%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/Chimdee/Self-Driving-Car/blob/master/Project%203%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
