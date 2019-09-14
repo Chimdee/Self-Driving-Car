@@ -100,12 +100,12 @@ I then recorded the vehicle recovering from the left side and right sides of the
 
 Then I repeated this process on track two in order to get more data points.
 
-To augment the data sat, I also collected images from track 2. For example, here is an image that has then been flipped:
+To augment the data sat, I also collected images from track 2. For example, here is an image that has then been taken from the track 2:
 
 ![alt text][image5]
 
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+After the collection process, I had around 42200 number of data points. I then preprocessed this data by cropping out the lower part/exclusion of sky and mountains/ of the images. 
 
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
