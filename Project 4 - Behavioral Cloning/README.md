@@ -31,3 +31,12 @@ This lab requires:
 * [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
 
 The lab enviroment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
+
+
+### Model development
+
+Refer to [this file](https://github.com/Chimdee/Self-Driving-Car/blob/master/Project%204%20-%20Behavioral%20Cloning/writeup_template.md) for overall approach and solution details for this project. 
+
+### Output 
+
+You can see output video demo [here]()
